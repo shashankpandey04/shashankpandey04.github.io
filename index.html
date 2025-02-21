@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>
+    Shashank Pandey - Backend Developer
+  </title>
+  <link rel="icon" href="./static/image.jpg" type="image/x-icon">
+</head>
+
+<body class="bg-white text-black font-sans">
+  <header class=" sticky top-0 z-10">
+    <nav class="bg-black p-4 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <span class="text-white font-bold text-lg">Shashank Pandey</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#home" class="text-white hover:text-gray-400 transition">Home</a>
+        <a href="#about" class="text-white hover:text-gray-400 transition">About</a>
+        <a href="#tech-stacks" class="text-white hover:text-gray-400 transition">Tech Stacks</a>
+        <a href="#projects" class="text-white hover:text-gray-400 transition">Projects</a>
+        <a href="mailto:contact.shashankpandey04@gmail.com"
+          class="text-white hover:text-gray-400 transition">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- landing page -->
+  <section id="home"
+    class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10">
+    <div class="w-60 h-60 rounded-full overflow-hidden border-4 border-gray-700 md:mr-10">
+      <img src="../static/image.jpg" alt="Profile" class="w-full h-full object-cover">
+    </div>
+    <div class="text-center md:text-left max-w-lg">
+      <p class="text-gray-600">Hello, I'm</p>
+      <h1 class="text-4xl font-bold">Shashank Pandey</h1>
+      <h2 class="text-xl text-gray-700">Backend Developer</h2>
+      <div class="flex justify-center md:justify-start space-x-4 mt-6">
+        <a href="mailto:contact.shashankpandey04@gmail.com"
+          class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="bg-white py-16">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center md:space-x-12">
+      <div class="md:w-1/3 flex justify-center">
+        <img src="../static/profile_image.jpeg" alt="Profile Picture"
+          class="rounded-lg shadow-lg w-80 h-80 object-cover">
+      </div>
+      <div class="md:w-2/3 text-center md:text-left mt-8 md:mt-0">
+        <p class="text-gray-500 uppercase tracking-wide text-sm">Get To Know More</p>
+        <h2 class="text-4xl font-bold mb-6">About Me</h2>
+        <div class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6">
+          <div class="border-2 border-gray-300 p-4 rounded-lg shadow-md text-center w-full md:w-1/2">
+            <span class="text-2xl">🏅</span>
+            <h3 class="font-bold text-lg">Experience</h3>
+            <p class="text-gray-600">3+ years</p>
+            <p class="text-gray-500 text-sm">Backend Development</p>
+          </div>
+          <div class="border-2 border-gray-300 p-4 rounded-lg shadow-md text-center w-full md:w-1/2">
+            <span class="text-2xl">👥</span>
+            <h3 class="font-bold text-lg">Education</h3>
+            <p class="text-gray-600">B.Tech</p>
+            <p class="text-gray-500 text-sm">Full Stack Web Development</p>
+          </div>
+        </div>
+        <p class="text-gray-700 mt-6 leading-relaxed">
+          Hi, I'm Shashank Pandey, a passionate Cloud Engineer, Developer, and Graphic Designer with a strong focus on
+          AWS,
+          open-source contributions, and backend development. Currently pursuing a B.Tech in Computer Science &
+          Engineering at
+          Lovely Professional University, I thrive on solving complex problems and building innovative solutions.
+          <br><br>
+          As the AWS Cloud Captain at AWS Cloud Club LPU, I lead workshops, mentor students, and drive cloud-based
+          projects
+          to foster a community of future-ready cloud professionals. My experience extends to Python development,
+          cloud infrastructure, and automation, along with designing impactful graphics that enhance user experiences.
+          <br><br>
+          Beyond my technical expertise, I actively contribute to open-source projects, build Discord utility bots at
+          Cyni Systems,
+          and provide technical support and backend development at ERM Systems. My internship at the Swapna Foundation
+          also
+          strengthened my research skills, allowing me to understand real-world challenges and develop data-driven
+          solutions.
+          <br><br>
+          I am always eager to explore new technologies, collaborate on exciting projects, and help others navigate
+          the world of cloud computing and software development. Let's connect and create something amazing together!
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section id="tech-stacks" class="bg-gray-100 py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Tech Stacks</h2>
+      <div class="flex flex-wrap justify-center space-x-4 space-y-4">
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
+            class="w-12 h-12">
+        </div>
+
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+            alt="JavaScript" class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="NextJS"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm"
+            class="w-12 h-12">
+        </div>
+        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
+            class="w-12 h-12">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="bg-white py-16"></section>
+  <div class="container mx-auto px-6 text-center">
+    <h2 class="text-4xl font-bold mb-8">Projects</h2>
+    <div class="flex flex-wrap justify-center space-x-4 space-y-4">
+      <div class="w-full md:w-1/3 p-4">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <img src="../static/awslpu.png" alt="Project One"
+            class="w-full h-48 object-cover rounded-lg mb-4">
+          <h3 class="text-2xl font-bold mb-4">AWS LPU</h3>
+          <p class="text-gray-700 mb-4">
+            AWS LPU Website is a event management website for Lovely Professional University. Made with HTML, CSS, JS &
+            Python
+            and providing many features like event attendance, event registration, event management, etc.
+            With many enrich features like Team Meetings, Push Notifications, Dyanmic Certificate generation, etc.
+            Providing a platform to ease the event management process.
+          </p>
+          <a href="https://www.awslpu.xyz" target="_blank">
+            <button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">View Project</button>
+          </a>
+        </div>
+      </div>
+      <div class="w-full md:w-1/3 p-4">
+        <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
+          <img src="https://cyni.quprdigital.tk/static/images/cyni.png" alt="Project One"
+            class="w-full h-48 rounded-lg mb-4">
+          <h3 class="text-2xl font-bold mb-4">CYNI Discord Bot</h3>
+          <p class="text-gray-700 mb-4">
+            CYNI is a Next generation Discord Bot made with Python and Discord.py. It provides many features like
+            Staff Management, Server Management System, Moderation, Fun, etc. It is a multipurpose bot with many
+            features.
+            Also providing a platform for developers to contribute and make the bot better.
+            With Dashboard made with Python and FAST API for asynchronous requests.
+          </p>
+          <a href="https://cyni.quprdigital.tk" target="_blank">
+            <button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">View Project</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+
+  <!-- My Footer -->
+  <footer class="bg-black text-white py-8">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <h3 class="text-xl font-bold">Shashank Pandey</h3>
+          <p class="text-gray-400">Backend Developer</p>
+        </div>
+        <div class="flex space-x-6 mb-4 md:mb-0">
+          <a href="https://github.com/shashankpandey04" class="hover:text-gray-400 transition" target="_blank">
+            <i class="fab fa-github text-2xl"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/shashankpandey04" class="hover:text-gray-400 transition" target="_blank">
+            <i class="fab fa-linkedin text-2xl"></i>
+          </a>
+          <a href="https://x.com/ShashankP04" class="hover:text-gray-400 transition" target="_blank">
+            <i class="fab fa-twitter text-2xl"></i>
+          </a>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 mt-6 pt-6 text-center">
+        <p>&copy; 2025 Shashank Pandey. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
