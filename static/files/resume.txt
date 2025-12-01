@@ -1,0 +1,41 @@
+
+1
+
+Automatic Zoom
+SHASHANK PANDEY
++91-9415847656 ⋄Lucknow, India
+contact.shashankpandey04@gmail.com ⋄linkedin.com/in/shashankpandey04 ⋄shashankpandey04.github.io
+ABOUT
+Backend/cloud developer with hands-on experience in real-world deployments, automation, and community-driven
+tools. Currently learning DSA fundamentals alongside systems design through live product work.
+EDUCATION
+B.Tech in Computer Science and Engineering, Lovely Professional University 2023 – 2027
+CGPA: 7.46
+Relevant Coursework: Operating Systems, DBMS, Computer Networks, Language Principle & Finite Automata
+SKILLS
+Languages Python, JavaScript
+Frameworks Flask, Express.js, Discord.py, Jinja2, Tailwind CSS, Svelte.js, Node.js, React.js
+Databases MongoDB, SQLite, MySQL
+Tools Git, GitHub, Easypanel, Traefik, Postman, MongoDB Compass, Cloudflare, Figma, Canva, Linux
+Certifications AWS Cloud Practitioner Essentials, AWS Educate Cloud 101
+EXPERIENCE
+AWS Cloud Captain Feb 2025 – Present
+AWS Cloud Club LPU Phagwara, Punjab
+•Led a campus-wide AWS Cloud Club with 400+ active student developers, organizing 8+ technical bootcamps
+and workshops under AWS Educate, resulting in 15+ student-led cloud projects and 200+ attendees at a flagship
+Flask deployment workshop.
+•Delivered a full-day Flask workshop attended by 200+ students covering backend, APIs, and hosting.
+•Organized technical bootcamps and events under AWS Educate partnership across campus.
+Freelance Backend Developer Ongoing
+Remote
+•Built Flask-based APIs for real clients in car rental, bakery orders, and event systems.
+•Implemented authentication, dashboards, payments, and deployed via GitHub Actions + Easypanel.
+PROJECTS
+AWS Cloud Club Event System awslpu.in:
+Designed and deployed an end-to-end event management system enabling 200+ users to create, register, and scan
+QR-based attendance reducing manual check-in time by 70%.
+Integrated Cashfree API for paid event handling and receipts
+Connected external tools like Google Sheets API and Discord Webhooks
+CYNI Discord Bot cyni.quprdigital.tk:
+Built a modular bot with AutoMod, Ticketing, Logging, Staff Management, and Utility modules.
+Used by 280+ Discord servers with 80k+ active users

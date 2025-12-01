@@ -1,219 +1,439 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>
-    Shashank Pandey - Backend Developer
-  </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Shashank Pandey - Backend & Systems Developer</title>
   <link rel="icon" href="./static/image.jpg" type="image/x-icon">
+  
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-card {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, 
+        rgba(249, 250, 251, 0.9) 0%, 
+        rgba(243, 244, 246, 0.95) 50%, 
+        rgba(229, 231, 235, 0.9) 100%);
+    }
+    .section-divider {
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1), transparent);
+      height: 1px;
+    }
+  </style>
 </head>
 
-<body class="bg-white text-black font-sans">
-  <header class=" sticky top-0 z-10">
-    <nav class="bg-black p-4 flex justify-between items-center">
-      <div class="flex items-center space-x-2">
-        <span class="text-white font-bold text-lg">Shashank Pandey</span>
-      </div>
-      <div class="hidden md:flex space-x-6">
-        <a href="#home" class="text-white hover:text-gray-400 transition">Home</a>
-        <a href="#about" class="text-white hover:text-gray-400 transition">About</a>
-        <a href="#tech-stacks" class="text-white hover:text-gray-400 transition">Tech Stacks</a>
-        <a href="#projects" class="text-white hover:text-gray-400 transition">Projects</a>
-        <a href="mailto:contact.shashankpandey04@gmail.com"
-          class="text-white hover:text-gray-400 transition">Contact</a>
-      </div>
-    </nav>
-  </header>
-
-  <!-- landing page -->
-  <section id="home"
-    class="flex flex-col md:flex-row items-center justify-center min-h-screen px-6 py-10 space-y-10 md:space-y-0 md:space-x-10">
-    <div class="w-60 h-60 rounded-full overflow-hidden border-4 border-gray-700 md:mr-10">
-      <img src="../static/image.jpg" alt="Profile" class="w-full h-full object-cover">
-    </div>
-    <div class="text-center md:text-left max-w-lg">
-      <p class="text-gray-600">Hello, I'm</p>
-      <h1 class="text-4xl font-bold">Shashank Pandey</h1>
-      <h2 class="text-xl text-gray-700">Backend Developer</h2>
-      <div class="flex justify-center md:justify-start space-x-4 mt-6">
-        <a href="mailto:contact.shashankpandey04@gmail.com"
-          class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">Contact Me</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT SECTION -->
-  <section id="about" class="bg-white py-16">
-    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center md:space-x-12">
-      <div class="md:w-1/3 flex justify-center">
-        <img src="../static/profile_image.jpeg" alt="Profile Picture"
-          class="rounded-lg shadow-lg w-80 h-80 object-cover">
-      </div>
-      <div class="md:w-2/3 text-center md:text-left mt-8 md:mt-0">
-        <p class="text-gray-500 uppercase tracking-wide text-sm">Get To Know More</p>
-        <h2 class="text-4xl font-bold mb-6">About Me</h2>
-        <div class="flex flex-col md:flex-row justify-center md:justify-start space-y-4 md:space-y-0 md:space-x-6">
-          <div class="border-2 border-gray-300 p-4 rounded-lg shadow-md text-center w-full md:w-1/2">
-            <span class="text-2xl">🏅</span>
-            <h3 class="font-bold text-lg">Experience</h3>
-            <p class="text-gray-600">3+ years</p>
-            <p class="text-gray-500 text-sm">Backend Development</p>
-          </div>
-          <div class="border-2 border-gray-300 p-4 rounded-lg shadow-md text-center w-full md:w-1/2">
-            <span class="text-2xl">👥</span>
-            <h3 class="font-bold text-lg">Education</h3>
-            <p class="text-gray-600">B.Tech</p>
-            <p class="text-gray-500 text-sm">Full Stack Web Development</p>
-          </div>
+<body class="bg-gray-50 text-gray-900 antialiased">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 glass">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <span class="text-lg font-semibold text-gray-900">Shashank Pandey</span>
         </div>
-        <p class="text-gray-700 mt-6 leading-relaxed">
-          Hi, I'm Shashank Pandey, a passionate Cloud Engineer, Developer, and Graphic Designer with a strong focus on
-          AWS,
-          open-source contributions, and backend development. Currently pursuing a B.Tech in Computer Science &
-          Engineering at
-          Lovely Professional University, I thrive on solving complex problems and building innovative solutions.
-          <br><br>
-          As the AWS Cloud Captain at AWS Cloud Club LPU, I lead workshops, mentor students, and drive cloud-based
-          projects
-          to foster a community of future-ready cloud professionals. My experience extends to Python development,
-          cloud infrastructure, and automation, along with designing impactful graphics that enhance user experiences.
-          <br><br>
-          Beyond my technical expertise, I actively contribute to open-source projects, build Discord utility bots at
-          Cyni Systems,
-          and provide technical support and backend development at ERM Systems. My internship at the Swapna Foundation
-          also
-          strengthened my research skills, allowing me to understand real-world challenges and develop data-driven
-          solutions.
-          <br><br>
-          I am always eager to explore new technologies, collaborate on exciting projects, and help others navigate
-          the world of cloud computing and software development. Let's connect and create something amazing together!
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Home</a>
+          <a href="#about" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">About</a>
+          <a href="#experience" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Experience</a>
+          <a href="#skills" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Skills</a>
+          <a href="#projects" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Projects</a>
+          <a href="#contact" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
+          <a href="./static/files/resume.pdf" download class="text-sm font-medium bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center justify-center hero-bg pt-16">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="mb-8">
+        <h1 class="text-5xl md:text-7xl font-light text-gray-900 mb-6 tracking-tight">
+          Shashank Pandey
+        </h1>
+        <h2 class="text-xl md:text-2xl font-medium text-gray-600 mb-8">
+          Backend & Systems Developer
+        </h2>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed mb-12">
+          I build reliable backend systems and lead technical initiatives. 
+          Currently serving as AWS Cloud Captain, delivering real-world solutions used by hundreds of users.
         </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tech Stack -->
-  <section id="tech-stacks" class="bg-gray-100 py-16">
-    <div class="container mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold mb-8">Tech Stacks</h2>
-      <div class="flex flex-wrap justify-center space-x-4 space-y-4">
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"
-            class="w-12 h-12">
-        </div>
-
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-            alt="JavaScript" class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg" alt="NextJS"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" alt="Flutter"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="npm"
-            class="w-12 h-12">
-        </div>
-        <div class="w-24 h-24 flex items-center justify-center bg-white shadow-md rounded-lg">
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker"
-            class="w-12 h-12">
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects" class="bg-white py-16"></section>
-  <div class="container mx-auto px-6 text-center">
-    <h2 class="text-4xl font-bold mb-8">Projects</h2>
-    <div class="flex flex-wrap justify-center space-x-4 space-y-4">
-      <div class="w-full md:w-1/3 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <img src="../static/awslpu.png" alt="Project One"
-            class="w-full h-48 object-cover rounded-lg mb-4">
-          <h3 class="text-2xl font-bold mb-4">AWS LPU</h3>
-          <p class="text-gray-700 mb-4">
-            AWS LPU Website is a event management website for Lovely Professional University. Made with HTML, CSS, JS &
-            Python
-            and providing many features like event attendance, event registration, event management, etc.
-            With many enrich features like Team Meetings, Push Notifications, Dyanmic Certificate generation, etc.
-            Providing a platform to ease the event management process.
-          </p>
-          <a href="https://www.awslpu.xyz" target="_blank">
-            <button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">View Project</button>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="./static/files/resume.pdf" download 
+             class="bg-gray-900 text-white px-8 py-4 rounded-2xl font-medium hover:bg-gray-800 transition-all transform hover:scale-105 shadow-lg">
+            Download CV
+          </a>
+          <a href="mailto:contact.shashankpandey04@gmail.com" 
+             class="glass-card px-8 py-4 rounded-2xl font-medium hover:shadow-lg transition-all">
+            Contact Me
           </a>
         </div>
       </div>
-      <div class="w-full md:w-1/3 p-4">
-        <div class="bg-gray-100 p-6 rounded-lg shadow-lg">
-          <img src="https://cyni.quprdigital.tk/static/images/cyni.png" alt="Project One"
-            class="w-full h-48 rounded-lg mb-4">
-          <h3 class="text-2xl font-bold mb-4">CYNI Discord Bot</h3>
-          <p class="text-gray-700 mb-4">
-            CYNI is a Next generation Discord Bot made with Python and Discord.py. It provides many features like
-            Staff Management, Server Management System, Moderation, Fun, etc. It is a multipurpose bot with many
-            features.
-            Also providing a platform for developers to contribute and make the bot better.
-            With Dashboard made with Python and FAST API for asynchronous requests.
+      
+      <!-- Social Links -->
+      <div class="flex justify-center space-x-6 mt-16">
+        <a href="https://github.com/shashankpandey04" class="text-gray-600 hover:text-gray-900 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/shashankpandey04" class="text-gray-600 hover:text-gray-900 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://x.com/ShashankP04" class="text-gray-600 hover:text-gray-900 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- About Section -->
+  <section id="about" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">About Me</h2>
+        <div class="w-24 h-1 bg-gray-300 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="text-lg text-gray-700 leading-relaxed mb-8">
+            Backend developer with hands-on experience in real-world deployments, automation, and community-driven tools. 
+            Currently learning DSA fundamentals alongside systems design through live product work.
           </p>
-          <a href="https://cyni.quprdigital.tk" target="_blank">
-            <button class="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">View Project</button>
-          </a>
+          <p class="text-lg text-gray-700 leading-relaxed mb-8">
+            As AWS Cloud Captain at LPU, I lead a 6K+ member cloud community, organizing technical bootcamps 
+            and workshops under AWS Educate partnership. I ship reliable Flask APIs for real clients and contribute 
+            to automation systems used by thousands.
+          </p>
+          <p class="text-lg text-gray-700 leading-relaxed">
+            I build practical solutions, support technical teams, and maintain systems that matter to users.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-6">
+          <div class="glass-card p-6 rounded-2xl text-center">
+            <div class="text-3xl font-light text-gray-900 mb-2">6K+</div>
+            <div class="text-sm font-medium text-gray-600">Members</div>
+            <div class="text-xs text-gray-500 mt-1">AWS Cloud Club</div>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center">
+            <div class="text-3xl font-light text-gray-900 mb-2">280+</div>
+            <div class="text-sm font-medium text-gray-600">Discord Servers</div>
+            <div class="text-xs text-gray-500 mt-1">CYNI Bot Usage</div>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center">
+            <div class="text-3xl font-light text-gray-900 mb-2">B.Tech</div>
+            <div class="text-sm font-medium text-gray-600">CSE (5th Sem)</div>
+            <div class="text-xs text-gray-500 mt-1">LPU</div>
+          </div>
+          <div class="glass-card p-6 rounded-2xl text-center">
+            <div class="text-3xl font-light text-gray-900 mb-2">AWS</div>
+            <div class="text-sm font-medium text-gray-600">Cloud Captain</div>
+            <div class="text-xs text-gray-500 mt-1">Leadership Role</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </section>
 
-  <!-- My Footer -->
-  <footer class="bg-black text-white py-8">
-    <div class="container mx-auto px-6">
+  <div class="section-divider"></div>
+
+  <!-- Experience Section -->
+  <section id="experience" class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">Experience</h2>
+        <div class="w-24 h-1 bg-gray-300 mx-auto"></div>
+      </div>
+      
+      <div class="space-y-12">
+        <div class="glass-card p-8 rounded-3xl">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">AWS Cloud Captain</h3>
+              <p class="text-lg text-gray-600">AWS Cloud Club LPU</p>
+            </div>
+            <div class="text-sm font-medium text-gray-500">Feb 2025 – Present</div>
+          </div>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Led campus-wide AWS Cloud Club with 400+ active student developers
+            </li>
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Organized 8+ technical bootcamps resulting in 15+ student-led cloud projects
+            </li>
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Delivered Flask workshop to 200+ students covering backend APIs and hosting
+            </li>
+          </ul>
+        </div>
+        
+        <div class="glass-card p-8 rounded-3xl">
+          <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+            <div>
+              <h3 class="text-2xl font-semibold text-gray-900 mb-2">Freelance Backend Developer</h3>
+              <p class="text-lg text-gray-600">Remote</p>
+            </div>
+            <div class="text-sm font-medium text-gray-500">Ongoing</div>
+          </div>
+          <ul class="space-y-3 text-gray-700">
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Built Flask-based APIs for real clients in car rental, bakery orders, and event systems
+            </li>
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Implemented authentication, dashboards, and payment integrations
+            </li>
+            <li class="flex items-start">
+              <span class="w-2 h-2 bg-gray-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+              Deployed systems via GitHub Actions + Easypanel for production use
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Skills Section -->
+  <section id="skills" class="py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">Skills</h2>
+        <div class="w-24 h-1 bg-gray-300 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Backend & APIs</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-blue-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Python</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-green-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Flask</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-purple-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Express.js</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-yellow-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Discord.py</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Systems & Infrastructure</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-orange-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Git & GitHub</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+              <span class="text-gray-700">Easypanel</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-indigo-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Traefik</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-gray-700 rounded-full mr-3"></span>
+              <span class="text-gray-700">Linux</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass-card p-8 rounded-3xl">
+          <h3 class="text-xl font-semibold text-gray-900 mb-6">Web & Frontend</h3>
+          <div class="space-y-4">
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-yellow-400 rounded-full mr-3"></span>
+              <span class="text-gray-700">JavaScript</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-black rounded-full mr-3"></span>
+              <span class="text-gray-700">React.js</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-cyan-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Tailwind CSS</span>
+            </div>
+            <div class="flex items-center">
+              <span class="w-3 h-3 bg-red-500 rounded-full mr-3"></span>
+              <span class="text-gray-700">Svelte.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-24 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">Projects</h2>
+        <div class="w-24 h-1 bg-gray-300 mx-auto"></div>
+      </div>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="glass-card rounded-3xl overflow-hidden">
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">AWS Cloud Club Website</h3>
+            <p class="text-gray-600 mb-4">Lead Developer</p>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              End-to-end event management system enabling 4K+ users to create, register, and scan QR-based attendance. 
+              Reduced manual check-in time by 70% through automation.
+            </p>
+            <div class="mb-6">
+              <div class="text-sm font-medium text-gray-600 mb-2">Impact & Features:</div>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Cashfree API integration for paid events</li>
+                <li>• Google Sheets API and Discord Webhooks</li>
+                <li>• 1.4K+ active users across campus</li>
+              </ul>
+            </div>
+            <div class="flex space-x-3">
+              <a href="https://awslpu.in" target="_blank" 
+                 class="bg-gray-900 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors">
+                Live Site
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="glass-card rounded-3xl overflow-hidden">
+          <div class="p-8">
+            <h3 class="text-2xl font-semibold text-gray-900 mb-4">CYNI Discord Bot Platform</h3>
+            <p class="text-gray-600 mb-4">Backend Developer</p>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+              Modular Discord bot with AutoMod, Ticketing, Logging, and Staff Management systems. 
+              Built with Python and Discord.py for scalable community management.
+            </p>
+            <div class="mb-6">
+              <div class="text-sm font-medium text-gray-600 mb-2">Scale & Usage:</div>
+              <ul class="text-sm text-gray-700 space-y-1">
+                <li>• Used by 280+ Discord servers</li>
+                <li>• Serving 80k+ active users</li>
+                <li>• Modular architecture for reliability</li>
+              </ul>
+            </div>
+            <div class="flex space-x-3">
+              <a href="https://cyni.quprdigital.tk" target="_blank" 
+                 class="bg-gray-900 text-white px-6 py-3 rounded-xl text-sm font-medium hover:bg-gray-800 transition-colors">
+                Platform
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">Let's Connect</h2>
+      <div class="w-24 h-1 bg-gray-300 mx-auto mb-12"></div>
+      
+      <p class="text-lg text-gray-700 mb-12 leading-relaxed max-w-2xl mx-auto">
+        I build backend systems that matter. If you need reliable APIs, automation tools, 
+        or technical leadership for your project, let's talk.
+      </p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <a href="mailto:contact.shashankpandey04@gmail.com" 
+           class="glass-card p-6 rounded-2xl hover:shadow-lg transition-all group">
+          <div class="text-gray-600 group-hover:text-gray-900 transition-colors">
+            <svg class="w-8 h-8 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <div class="text-sm font-medium">Email</div>
+          </div>
+        </a>
+        
+        <a href="https://www.linkedin.com/in/shashankpandey04" target="_blank" 
+           class="glass-card p-6 rounded-2xl hover:shadow-lg transition-all group">
+          <div class="text-gray-600 group-hover:text-gray-900 transition-colors">
+            <svg class="w-8 h-8 mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <div class="text-sm font-medium">LinkedIn</div>
+          </div>
+        </a>
+        
+        <a href="https://github.com/shashankpandey04" target="_blank" 
+           class="glass-card p-6 rounded-2xl hover:shadow-lg transition-all group">
+          <div class="text-gray-600 group-hover:text-gray-900 transition-colors">
+            <svg class="w-8 h-8 mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <div class="text-sm font-medium">GitHub</div>
+          </div>
+        </a>
+        
+        <a href="https://x.com/ShashankP04" target="_blank" 
+           class="glass-card p-6 rounded-2xl hover:shadow-lg transition-all group">
+          <div class="text-gray-600 group-hover:text-gray-900 transition-colors">
+            <svg class="w-8 h-8 mx-auto mb-3" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+            </svg>
+            <div class="text-sm font-medium">X (Twitter)</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0">
-          <h3 class="text-xl font-bold">Shashank Pandey</h3>
-          <p class="text-gray-400">Backend Developer</p>
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold mb-2">Shashank Pandey</h3>
+          <p class="text-gray-400">Backend & Systems Developer</p>
         </div>
-        <div class="flex space-x-6 mb-4 md:mb-0">
-          <a href="https://github.com/shashankpandey04" class="hover:text-gray-400 transition" target="_blank">
-            <i class="fab fa-github text-2xl"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/shashankpandey04" class="hover:text-gray-400 transition" target="_blank">
-            <i class="fab fa-linkedin text-2xl"></i>
-          </a>
-          <a href="https://x.com/ShashankP04" class="hover:text-gray-400 transition" target="_blank">
-            <i class="fab fa-twitter text-2xl"></i>
-          </a>
+        <div class="text-center md:text-right">
+          <p class="text-gray-400 text-sm">&copy; 2025 Shashank Pandey. All rights reserved.</p>
+          <p class="text-gray-500 text-xs mt-1">Built with Tailwind CSS & Apple-inspired design</p>
         </div>
-      </div>
-      <div class="border-t border-gray-700 mt-6 pt-6 text-center">
-        <p>&copy; 2025 Shashank Pandey. All rights reserved.</p>
       </div>
     </div>
   </footer>
