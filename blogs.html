@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Blog - Shashank Pandey</title>
+  <link rel="icon" href="./static/image.jpg" type="image/x-icon">
+  
+  <style>
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .glass {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .glass-unified {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .glass-nav {
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      background: rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero-bg {
+      background: linear-gradient(135deg, 
+        rgba(249, 250, 251, 0.9) 0%, 
+        rgba(243, 244, 246, 0.95) 50%, 
+        rgba(229, 231, 235, 0.9) 100%);
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.45s ease-out forwards;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900 antialiased">
+  <nav class="fixed top-0 inset-x-0 z-50 glass-nav shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center">
+          <a href="index.html" class="text-lg font-semibold text-gray-900">Shashank Pandey</a>
+        </div>
+        <div class="flex space-x-8">
+          <a href="index.html" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Home</a>
+          <a href="index.html#projects" class="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">Projects</a>
+          <a href="blogs.html" class="text-sm font-medium text-gray-900 transition-colors">Blog</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="min-h-screen pt-24 pb-12 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-light text-gray-900 mb-6">Blog</h1>
+        <div class="w-24 h-1 bg-gray-300 mx-auto mb-6"></div>
+        <p class="text-lg text-gray-700 max-w-2xl mx-auto">
+          Thoughts, learnings, and experiences from building backend systems and leading technical teams.
+        </p>
+      </div>
+      
+      <!-- Dynamic Blogs Container - populated by blogs.js -->
+      <div id="blogs-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Blog posts will be loaded dynamically from API -->
+        <!-- Loading skeleton will appear here while fetching -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold mb-2">Shashank Pandey</h3>
+          <p class="text-gray-400">Backend & Systems Developer</p>
+        </div>
+        <div class="text-center md:text-right">
+          <p class="text-gray-400 text-sm">&copy; 2025 Shashank Pandey. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript Files for API Integration -->
+  <script src="./assets/js/api.js"></script>
+  <script src="./assets/js/utils.js"></script>
+  <script src="./assets/js/blogs.js"></script>
+</body>
+</html>

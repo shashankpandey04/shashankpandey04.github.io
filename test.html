@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Integration Test</title>
+    <script src="https://cdn.tailwindcss.com/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        .glass-unified {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl font-bold text-white mb-8 text-center">API Integration Test</h1>
+        
+        <div class="glass-unified p-8 rounded-2xl shadow-xl mb-8">
+            <h2 class="text-2xl font-semibold text-white mb-4">Featured Projects</h2>
+            <div id="featured-projects-container"></div>
+        </div>
+        
+        <div class="glass-unified p-8 rounded-2xl shadow-xl">
+            <h2 class="text-2xl font-semibold text-white mb-4">Latest Blogs</h2>
+            <div id="latest-blogs-container"></div>
+        </div>
+    </div>
+    
+    <script src="./assets/js/cache.js"></script>
+    <script src="./assets/js/api.js"></script>
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/home.js"></script>
+</body>
+</html>
