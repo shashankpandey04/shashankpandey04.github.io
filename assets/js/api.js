@@ -3,7 +3,7 @@
  * Handles all API calls to the backend with proper error handling and response parsing
  */
 
-const API_BASE_URL = 'https://shashankpandey04.netlify.app/v1';
+const API_BASE_URL = 'https://api-shashankpandey-xyz.onrender.com/v1';
 
 /**
  * Sleep utility for retry delays
