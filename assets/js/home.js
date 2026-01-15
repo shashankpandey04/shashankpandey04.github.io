@@ -4,10 +4,47 @@
  */
 
 /**
+ * Escape HTML to prevent XSS
+ */
+function escapeHTML(text) {
+  if (!text) return '';
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+/**
+ * Truncate text to specified length
+ */
+function truncateText(text, length = 150) {
+  if (!text) return '';
+  if (text.length <= length) return text;
+  return text.substring(0, length).trim() + '...';
+}
+
+/**
+ * Format date
+ */
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+/**
  * Render a featured project card for the landing page
- * @param {object} project - Project object from API
- * @param {number} index - Index for animation delay
- * @returns {string} - HTML string for project card
  */
 function renderFeaturedProjectCard(project, index = 0) {
   const animationDelay = index > 0 ? `style="animation-delay: ${index * 0.1}s;"` : '';
@@ -56,9 +93,6 @@ function renderFeaturedProjectCard(project, index = 0) {
 
 /**
  * Render a blog preview card for the landing page
- * @param {object} blog - Blog object from API
- * @param {number} index - Index for animation delay
- * @returns {string} - HTML string for blog card
  */
 function renderBlogPreviewCard(blog, index = 0) {
   const animationDelay = index > 0 ? `style="animation-delay: ${index * 0.1}s;"` : '';
@@ -89,29 +123,25 @@ async function loadFeaturedProjects() {
   const container = document.getElementById('featured-projects-container');
   if (!container) return;
   
-  // Show loading state
-  showLoadingSkeleton(container, 4);
-  
   try {
-    // Fetch projects with caching
-    const projects = await fetchWithCache('featured_projects', async () => {
-      return await fetchFeaturedProjects();
-    });
+    const response = await fetchFeaturedProjects();
     
-    if (!projects || projects.length === 0) {
-      showEmptyState(container, 'No featured projects yet. Check back soon!');
+    // Extract data - handle nested structure
+    let projects = response.data?.data || response.data || [];
+    
+    if (!Array.isArray(projects)) {
+      projects = [];
+    }
+    
+    if (projects.length === 0) {
+      container.innerHTML = '<p class="text-center text-gray-500">No featured projects yet.</p>';
       return;
     }
     
-    // Render featured projects (max 4)
-    const featuredProjects = projects.slice(0, 4);
-    container.innerHTML = featuredProjects
-      .map((project, index) => renderFeaturedProjectCard(project, index))
-      .join('');
-    
+    container.innerHTML = projects.slice(0, 4).map((p, i) => renderFeaturedProjectCard(p, i)).join('');
   } catch (error) {
     console.error('Error loading featured projects:', error);
-    showError(container, 'Failed to load featured projects. Please try again later.');
+    container.innerHTML = '<p class="text-center text-red-500">Failed to load projects.</p>';
   }
 }
 
@@ -122,29 +152,25 @@ async function loadLatestBlogs() {
   const container = document.getElementById('latest-blogs-container');
   if (!container) return;
   
-  // Show loading state
-  showLoadingSkeleton(container, 3);
-  
   try {
-    // Fetch blogs with caching
-    const blogs = await fetchWithCache('blogs', async () => {
-      return await fetchBlogs();
-    });
+    const response = await fetchBlogs();
     
-    if (!blogs || blogs.length === 0) {
-      showEmptyState(container, 'No blog posts yet. Stay tuned!');
+    // Extract data - handle nested structure
+    let blogs = response.data?.data || response.data || [];
+    
+    if (!Array.isArray(blogs)) {
+      blogs = [];
+    }
+    
+    if (blogs.length === 0) {
+      container.innerHTML = '<p class="text-center text-gray-500">No blog posts yet.</p>';
       return;
     }
     
-    // Render latest 3 blogs
-    const latestBlogs = blogs.slice(0, 3);
-    container.innerHTML = latestBlogs
-      .map((blog, index) => renderBlogPreviewCard(blog, index))
-      .join('');
-    
+    container.innerHTML = blogs.slice(0, 3).map((b, i) => renderBlogPreviewCard(b, i)).join('');
   } catch (error) {
     console.error('Error loading blogs:', error);
-    showError(container, 'Failed to load blog posts. Please try again later.');
+    container.innerHTML = '<p class="text-center text-red-500">Failed to load blog posts.</p>';
   }
 }
 
