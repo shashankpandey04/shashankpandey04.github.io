@@ -4,6 +4,45 @@
  */
 
 /**
+ * Escape HTML to prevent XSS
+ */
+function escapeHTML(text) {
+  if (!text) return '';
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+/**
+ * Format date
+ */
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+/**
+ * Get query parameter from URL
+ */
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  return urlParams.get(param);
+}
+
+/**
  * Render single blog post
  * @param {object} blog - Blog object from API
  * @param {HTMLElement} container - Container element
@@ -12,7 +51,10 @@ function renderBlogPost(blog, container) {
   if (!container) return;
   
   // Format the date
-  const formattedDate = formatDate(blog.createdAt);
+  const formattedDate = formatDate(blog.createdAt || blog.publishedAt);
+  const content = blog.content || blog.description || '';
+  // Parse markdown to HTML
+  const htmlContent = marked.parse(content);
   
   container.innerHTML = `
     <article class="max-w-4xl mx-auto">
@@ -48,32 +90,33 @@ function renderBlogPost(blog, container) {
         ` : ''}
       </header>
       
-      <!-- Blog Content -->
-      <div class="prose prose-lg max-w-none">
-        <div class="text-gray-800 leading-relaxed whitespace-pre-wrap">
-          ${escapeHTML(blog.description)}
-        </div>
+      <!-- Blog Content - Markdown rendered -->
+      <div class="prose max-w-none text-gray-800">
+        ${htmlContent}
       </div>
       
-      <!-- Share Section (Optional) -->
+      <!-- Share Section -->
       <div class="mt-12 pt-8 border-t border-gray-200">
         <div class="flex justify-between items-center">
           <a href="blogs.html" 
              class="text-gray-600 hover:text-gray-900 font-medium transition-colors">
             ← Back to all blogs
           </a>
-          <div class="flex space-x-4">
-            <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(blog.title)}&url=${encodeURIComponent(window.location.href)}" 
-               target="_blank" rel="noopener noreferrer"
-               class="text-gray-600 hover:text-gray-900 transition-colors"
-               title="Share on Twitter">
-              <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-              </svg>
-            </a>
+          <div class="mt-4">
+            <button id="copy-url-button" class="px-4 py-2 bg-gray-200 text-gray-800 rounded hover:bg-gray-300 transition-colors">
+              Copy Blog URL
+            </button>
           </div>
+          <script>
+            document.getElementById('copy-url-button').addEventListener('click', function() {
+              navigator.clipboard.writeText(window.location.href).then(function() {
+                alert('Blog URL copied to clipboard!');
+              }, function(err) {
+                alert('Failed to copy URL: ' + err);
+              });
+            });
+          </script>
         </div>
-      </div>
     </article>
   `;
 }
@@ -94,56 +137,40 @@ async function loadBlogPost() {
   const slug = getQueryParam('slug');
   
   if (!slug) {
-    showError(container, 'No blog post specified. Please select a blog post to read.');
+    container.innerHTML = '<p class="text-center text-red-500">No blog post specified. Please select a blog post to read.</p>';
     return;
   }
   
-  // Show loading state
-  showLoadingSkeleton(container, 1);
-  
   try {
+    container.innerHTML = '<p class="text-center text-gray-500">Loading blog post...</p>';
+    
     // Fetch blog by slug from API
     const response = await fetchBlogBySlug(slug);
     
-    if (response.success && response.data) {
-      // Get the blog object
-      const blog = response.data;
-      
-      // Update page title
-      if (blog.title) {
-        document.title = `${blog.title} - Shashank Pandey`;
-      }
-      
-      // Render blog post
-      renderBlogPost(blog, container);
-    } else {
-      // Show error if fetch failed
-      showError(container, response.error || 'Blog post not found.');
+    // Extract data - handle nested data.data or just data
+    const blog = response.data?.data || response.data;
+    
+    if (!blog) {
+      container.innerHTML = '<p class="text-center text-red-500">Blog post not found.</p>';
+      return;
     }
+    
+    // Update page title
+    if (blog.title) {
+      document.title = `${blog.title} - Shashank Pandey`;
+    }
+    
+    // Render blog post
+    renderBlogPost(blog, container);
   } catch (error) {
     console.error('Error loading blog post:', error);
-    showError(container, 'An unexpected error occurred while loading the blog post.');
+    container.innerHTML = '<p class="text-center text-red-500">Failed to load blog post. Please try again later.</p>';
   }
 }
 
-// Auto-load blog post when DOM is ready (only if blog-post-container exists)
+// Auto-load blog post when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('blog-post-container')) {
-      loadBlogPost();
-    }
-  });
+  document.addEventListener('DOMContentLoaded', loadBlogPost);
 } else {
-  // DOM already loaded
-  if (document.getElementById('blog-post-container')) {
-    loadBlogPost();
-  }
-}
-
-// Export functions for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    renderBlogPost,
-    loadBlogPost,
-  };
+  loadBlogPost();
 }

@@ -4,21 +4,55 @@
  */
 
 /**
+ * Escape HTML to prevent XSS
+ */
+function escapeHTML(text) {
+  if (!text) return '';
+  const map = {
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  };
+  return text.replace(/[&<>"']/g, m => map[m]);
+}
+
+/**
+ * Truncate text to specified length
+ */
+function truncateText(text, length = 200) {
+  if (!text) return '';
+  if (text.length <= length) return text;
+  return text.substring(0, length).trim() + '...';
+}
+
+/**
+ * Format date
+ */
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  try {
+    return new Date(dateStr).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+  } catch {
+    return dateStr;
+  }
+}
+
+/**
  * Render a single blog card
- * @param {object} blog - Blog object from API
- * @param {number} index - Index for animation delay
- * @returns {string} - HTML string for blog card
  */
 function renderBlogCard(blog, index = 0) {
   const animationDelay = index > 0 ? `style="animation-delay: ${index * 0.1}s;"` : '';
   
-  // Format the date
-  const formattedDate = formatDate(blog.createdAt);
-  
-  // Truncate summary if too long
-  const summary = blog.summary 
-    ? truncateText(blog.summary, 200)
-    : (blog.description ? truncateText(blog.description, 200) : '');
+  const formattedDate = formatDate(blog.createdAt || blog.publishedAt);
+  const summaryText = blog.summary || truncateText(blog.content || blog.description || '', 200);
+  // Parse markdown in summary
+  const summary = marked.parse(summaryText).replace(/<p>|<\/p>/g, '').trim();
   
   return `
     <div class="glass-unified p-6 sm:p-8 lg:p-10 rounded-2xl shadow-xl transition transform hover:bg-white/30 hover:-translate-y-1 hover:saturate-150 opacity-0 translate-y-6 animate-fadeInUp" ${animationDelay}>
@@ -26,7 +60,7 @@ function renderBlogCard(blog, index = 0) {
         <h3 class="text-2xl font-semibold text-gray-900">${escapeHTML(blog.title)}</h3>
         ${formattedDate ? `<span class="text-sm text-gray-500 ml-4 flex-shrink-0">${formattedDate}</span>` : ''}
       </div>
-      ${summary ? `<p class="text-gray-700 mb-6 leading-relaxed">${escapeHTML(summary)}</p>` : ''}
+      ${summary ? `<div class="text-gray-700 mb-6 leading-relaxed prose prose-sm">${summary}</div>` : ''}
       <a href="blog.html?slug=${encodeURIComponent(blog.slug)}" 
          class="inline-flex items-center text-gray-900 font-medium hover:text-gray-700 transition-colors">
         Read More
@@ -40,81 +74,44 @@ function renderBlogCard(blog, index = 0) {
 
 /**
  * Render all blogs in the container
- * @param {Array} blogs - Array of blog objects
- * @param {HTMLElement} container - Container element
  */
 function renderBlogs(blogs, container) {
-  if (!container) return;
-  
   if (!blogs || blogs.length === 0) {
-    showEmptyState(container, 'No blog posts available yet. Check back soon!');
+    container.innerHTML = '<p class="text-center text-gray-500 col-span-full">No blog posts available yet.</p>';
     return;
   }
-  
-  // Clear container
-  container.innerHTML = '';
-  
-  // Render each blog
-  blogs.forEach((blog, index) => {
-    const blogHTML = renderBlogCard(blog, index);
-    container.insertAdjacentHTML('beforeend', blogHTML);
-  });
+  container.innerHTML = blogs.map((b, i) => renderBlogCard(b, i)).join('');
 }
 
 /**
  * Load and display blogs
- * Fetches blogs from API and renders them
  */
 async function loadBlogs() {
   const container = document.getElementById('blogs-container');
-  
-  if (!container) {
-    console.error('Blogs container not found. Add <div id="blogs-container"></div> to your HTML.');
-    return;
-  }
-  
-  // Show loading state
-  showLoadingSkeleton(container, 4);
+  if (!container) return;
   
   try {
-    // Fetch blogs from API
+    container.innerHTML = '<p class="col-span-full text-center text-gray-500">Loading blogs...</p>';
+    
     const response = await fetchBlogs();
     
-    if (response.success && response.data) {
-      // Check if data is an array or has a blogs property
-      const blogs = Array.isArray(response.data) ? response.data : response.data.blogs || [];
-      
-      // Render blogs
-      renderBlogs(blogs, container);
-    } else {
-      // Show error if fetch failed
-      showError(container, response.error || 'Failed to load blog posts.');
+    // Extract data - handle nested structure
+    let blogs = response.data?.data || response.data || [];
+    
+    if (!Array.isArray(blogs)) {
+      blogs = [];
     }
+    
+    renderBlogs(blogs, container);
   } catch (error) {
     console.error('Error loading blogs:', error);
-    showError(container, 'An unexpected error occurred while loading blogs.');
+    container.innerHTML = '<p class="col-span-full text-center text-red-500">Failed to load blog posts. Please try again later.</p>';
   }
 }
 
-// Auto-load blogs when DOM is ready (only if blogs-container exists)
+// Auto-load blogs when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('blogs-container')) {
-      loadBlogs();
-    }
-  });
+  document.addEventListener('DOMContentLoaded', loadBlogs);
 } else {
-  // DOM already loaded
-  if (document.getElementById('blogs-container')) {
-    loadBlogs();
-  }
-}
-
-// Export functions for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    renderBlogCard,
-    renderBlogs,
-    loadBlogs,
-  };
+  loadBlogs();
 }

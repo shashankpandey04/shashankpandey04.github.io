@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -48,6 +49,47 @@
       padding: 0.125rem 0.25rem;
       border-radius: 0.25rem;
       font-size: 0.875rem;
+    }
+    /* Markdown styles */
+    .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .prose h1 { font-size: 2rem; }
+    .prose h2 { font-size: 1.75rem; }
+    .prose h3 { font-size: 1.5rem; }
+    .prose h4 { font-size: 1.25rem; }
+    .prose p { margin-bottom: 1rem; line-height: 1.7; }
+    .prose a { color: #2563eb; text-decoration: underline; }
+    .prose a:hover { color: #1d4ed8; }
+    .prose ul, .prose ol { margin: 1rem 0; padding-left: 2rem; }
+    .prose li { margin-bottom: 0.5rem; }
+    .prose pre { 
+      background-color: #1f2937; 
+      color: #f3f4f6; 
+      padding: 1rem; 
+      border-radius: 0.5rem; 
+      overflow-x: auto; 
+      margin: 1rem 0;
+    }
+    .prose pre code { 
+      background-color: transparent; 
+      padding: 0; 
+      color: inherit;
+    }
+    .prose blockquote { 
+      border-left: 4px solid #e5e7eb; 
+      padding-left: 1rem; 
+      margin: 1rem 0; 
+      font-style: italic; 
+      color: #6b7280;
+    }
+    .prose img { 
+      max-width: 100%; 
+      height: auto; 
+      border-radius: 0.5rem; 
+      margin: 1rem 0;
     }
   </style>
 </head>
